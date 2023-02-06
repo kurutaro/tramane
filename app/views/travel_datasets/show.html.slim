@@ -1,0 +1,17 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @travel_dataset.name
+
+p
+  strong Description:
+  = @travel_dataset.description
+
+p
+  strong Dataset:
+  = @travel_dataset.dataset
+
+=> link_to "Edit", edit_travel_dataset_path(@travel_dataset)
+'|
+=< link_to "Back", travel_datasets_path

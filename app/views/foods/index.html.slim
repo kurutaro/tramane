@@ -1,0 +1,33 @@
+h1 観光地グルメ
+p.description
+  |グルメ情報を記録することで旅行データセット作成時に選択することが可能になります。
+
+
+div class="new_button"
+  a href="/foods/new" グルメを新規登録
+
+table.table_list
+  thead
+    tr
+      th 
+      th 店名
+      th コメント
+      th 場所
+      th 写真
+
+  tbody
+    - @foods.each do |food|
+      tr
+        td = image_tag food.logo
+        td = link_to food.name, food
+        td = food.description
+        td = food.prefecture
+        td = image_tag food.photo, :width => '100'
+        /td
+          - food.image.each do |image|
+            = image_tag image.variant(resize: '100x100')
+        /td = link_to "Edit", edit_food_path(food)
+        /td = link_to "Destroy", food, data: {confirm: "Are you sure?"}, method: :delete
+
+br
+

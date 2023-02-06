@@ -1,0 +1,2 @@
+class TravelDataset < ApplicationRecord
+end

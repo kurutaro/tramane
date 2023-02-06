@@ -1,0 +1,28 @@
+
+h1 旅行データセット
+p.description
+  |旅行日程を作成できます
+  
+= image_tag "travel_dataset.JPG", class: "main_img"
+
+div class="new_button"
+  a href="/travel_datasets/new" 旅行計画を作成
+
+h2 データ一覧
+table.table_list
+  thead
+    tr
+      th Name
+      th Description
+      th
+
+  tbody
+    - @travel_datasets.each do |travel_dataset|
+      tr
+        td = link_to travel_dataset.name, travel_dataset
+        td = travel_dataset.description
+        td = link_to "Destroy", travel_dataset, data: {confirm: "Are you sure?"}, method: :delete
+
+br
+
+h2 メニュー

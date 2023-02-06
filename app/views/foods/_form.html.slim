@@ -1,0 +1,68 @@
+= form_for @food do |f|
+  - if @food.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@food.errors.count, "error")} prohibited this food from being saved:"
+      ul
+        - @food.errors.full_messages.each do |message|
+          li = message
+
+  h2 hotpepperから検索
+  |ID：
+  input type="text" name="hotpepper_id" id="hotpepper_id" style="margin: 5px 0;"
+  |&emsp;(例)J000740656
+  br
+  input type="button" value="店舗情報を取得" onclick="get_info()"
+
+  h2 フォームから登録
+  .field style="margin: 5px 0;"
+    = f.label "店名: "
+    = f.text_field :name, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "住所: "
+    = f.text_field :address, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "店舗URL: "
+    = f.text_field :url, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "地方: "
+    = f.text_field :large_area, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "都道府県: "
+    = f.text_field :prefecture, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "地域: "
+    = f.text_field :middle_area, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "最寄り駅: "
+    = f.text_field :station, size: 100
+  .field style="margin: 5px 0;"
+    = f.label :コメント
+    = f.text_field :description, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "ジャンル: "
+    = f.text_field :genle, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "サブジャンル: "
+    = f.text_field :sub_genle, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "平均予算: "
+    = f.text_field :budget, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "営業時間: "
+    = f.text_field :open, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "アクセス: "
+    = f.text_field :access, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "駐車場: "
+    = f.text_field :parking, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "ロゴ: "
+    = f.text_field :logo, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "写真: "
+    = f.text_field :photo, size: 100
+  .field style="margin: 5px 0;"
+    = f.label "画像: "
+    = f.file_field :image, multiple: true
+  .actions = f.submit

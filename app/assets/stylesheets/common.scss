@@ -1,0 +1,229 @@
+//リセット
+*{
+  padding: 0;
+  margin: 0;
+  // font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+  font-family: "Meiryo UI", "Hiragino Sans", "Yu Gothic UI", "MS PGothic", "Hiragino Kaku Gothic ProN", sans-serif;
+
+}
+
+//ヘッダーのデザイン
+/* header */
+#header {
+  width: 100%;
+  height: 80px;
+  background-color: #DC143C;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 10px;
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  z-index:1;
+  
+
+  .logo{
+    margin: 0;
+    padding-top: 5px;
+    width: auto;
+    height: 70px;
+  }
+
+  /* nav */
+  .nav__list {
+    list-style: none;
+    display: flex;
+  }
+  .nav__item a {
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+//ヘッダーのデザイン
+footer {
+  width: 100%;
+  height: 25px; 
+  text-align: center;
+  background-color: gray;
+}
+
+// コンテナ系
+body {
+  background-color: #fffafa;
+}
+
+.container {
+  display: flex;
+
+  //サイドバーのデザイン
+  #sidebar {
+    width: 270px;
+    height: auto;
+    background-color: #e7e3e3;
+  }
+
+  .content {
+    padding: 80px 0 1000px 0;
+    width: 100%;
+    margin: 0 60px;
+  }
+
+  .main_img {
+    width: 50%;
+    height: auto;
+    margin: 10px auto;
+  }
+}
+
+
+// 見出しのデザイン
+h1 {
+  padding-left: 10px;
+  margin: 10px 0 0 0;
+  font-size: 50px;
+  color: #bd0f31;
+}
+
+h2 {
+  font-size: 24px;
+
+  position: relative;
+  padding: .1em .3em;
+  margin: 30px 0 0 0;
+  background-color: #DC143C;
+  color: #fff;
+  z-index:-1;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: -webkit-calc(100% - 20px);
+    width: calc(100% - 20px);
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: #BC143C;
+    z-index:-1;
+  }
+}
+
+h3 {
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+  padding: 0 0 0.3em 2.2em;
+  border-bottom: 2px solid #DC143C;
+
+  &::before{
+    content: "■";
+    position: absolute;
+    color: #ff0000;
+    top: -5px;
+    left: 4px;
+  }
+
+  &::after{
+    content: "■";
+    position: absolute;
+    color: #ffb6c1;
+    top: 5px;
+    left: 13px;
+  }
+}
+
+.description {
+  font-size: 15px;
+
+  background-color: #f5f5f5;
+  margin: 5px 0 0 0;
+  padding: 10px;
+  width: auto;
+}
+
+//indexページのテーブルデザイン
+.table_list {
+  margin: 20px 0 0 20px;
+  width: 90%;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  th {
+    padding: 10px;
+    border-bottom: solid 4px #696969;
+    color: #696969;
+  }
+
+  td {
+    padding: 10px;
+    border-bottom: solid 1px #696969;
+  }
+ }
+
+.table_detail{
+  border-collapse: collapse;
+  margin:20px 0 10px 0;
+
+  tr th{
+    color: #fff;
+    border: solid 1px rgb(233, 230, 230);
+    background-color: #ec7f90;
+    padding: 5px;
+  }
+
+  tr td{
+    border: solid 1px rgb(197, 195, 195);
+    padding: 5px;
+  }
+}
+
+//新規登録ボタン
+.new_button {
+  a {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0 0 20px;
+    max-width: 240px;
+    padding: 10px 0;
+    color: #FFF;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    background: #ec7f90;
+    filter: drop-shadow(0px 2px 4px #ccc);
+    border-radius: 3px;
+    border-radius: 50px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  a:before{
+    content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      background-image: linear-gradient( 
+    130deg, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 55%);
+      -webkit-transition: 0.5s;
+      transition: 0.6s;
+  }
+
+  a:hover:before {
+    left: 100%;
+  }
+}

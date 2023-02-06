@@ -1,0 +1,68 @@
+p#notice = notice
+
+
+h1
+  = image_tag @food.logo, :width => '40px'
+  = @food.name
+
+= image_tag @food.photo, :width => '300'
+
+h3 店の情報
+table.table_detail
+  tr
+    th 店名
+    td = @food.name
+  tr
+    th アクセス
+    td = @food.access
+  tr
+    th 店のコメント
+    td = @food.description
+  tr
+    th 住所
+    td = @food.address
+  tr
+    th 営業時間
+    td = @food.open
+  tr
+    th 大エリア
+    td = @food.large_area
+  tr
+    th 都道府県
+    td = @food.prefecture
+  tr
+    th 中エリア
+    td = @food.middle_area
+  tr
+    th 最寄り駅
+    td = @food.station
+  tr
+    th ジャンル
+    td = @food.genle
+  tr
+    th サブジャンル
+    td = @food.sub_genle
+  tr
+    th 平均予算
+    td = @food.budget
+  tr
+    th 駐車場
+    td = @food.parking
+  tr
+    th 店舗URL
+    td
+      = link_to "#{@food.url}", @food.url, target: :_blank
+  tr
+    th ユーザーが登録した写真
+    td
+      - if @food.image.attached?
+        - @food.image.each do |image|
+          = image_tag image.variant(resize: '400x400')
+
+
+
+  
+
+=> link_to "Edit", edit_food_path(@food)
+'|
+=< link_to "Back", foods_path

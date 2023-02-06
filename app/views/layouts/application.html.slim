@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title
+      | Tramane
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    header#header
+      = link_to image_tag("logo.png", class: "logo"), travel_datasets_path
+
+      nav
+        ul.nav__list
+          - if current_user
+            li.nav__item 
+              = link_to '旅行計画', travel_datasets_path
+            li.nav__item 
+              = link_to '観光地グルメ', foods_path
+            li.nav__item
+              = link_to 'ユーザーリスト', admin_users_path
+            li.nav__item
+              = link_to 'ログアウト', logout_path, method: :delete
+          - else
+            li.nav__item
+              = link_to 'ログイン', login_path
+
+    div.container
+      div#sidebar
+      div.content
+        = yield
+
+    footer#footer
+      p Travel management

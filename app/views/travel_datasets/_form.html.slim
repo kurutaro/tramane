@@ -1,0 +1,154 @@
+= form_for @travel_dataset do |f|
+  - if @travel_dataset.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@travel_dataset.errors.count, "error")} prohibited this travel_dataset from being saved:"
+      ul
+        - @travel_dataset.errors.full_messages.each do |message|
+          li = message
+
+
+  h2 初期設定
+  .field style="margin: 5px 0;"
+    = f.label "旅行名："
+    = f.text_field :name
+
+  .field style="margin: 5px 0;"
+    = f.label "補足："
+    = f.text_area :description
+    
+  .field style="margin: 5px 0;"
+    = f.label "旅行日数："
+    = f.select :stay_number, [1,2,3,4,5,6,7], {}, {:onchange => "change_disp()"}
+    |&ensp;日
+
+  h2 計画作成
+  #day1
+    h3
+      |1日目&emsp;
+      input type="button" value="表示/非表示" name="day1" onclick="form_display(this)"
+    .day1-form_area
+      .day1-place
+      /ここにフォームが追加される
+    
+      .day1-add-form-btn
+        a onclick="add_place('day1','station','　　駅')" style="margin-right: 5px;"
+          = icon('fas', 'bus fa-2x')
+        a onclick="add_place('day1','gourmet','グルメ')" style="margin-right: 5px;"
+          = icon('fas', 'utensils fa-2x')
+        a onclick="add_place('day1','sightseeing','観光地')" style="margin-right: 5px;"
+          = icon('fas', 'map-location-dot fa-2x')
+        a onclick="add_place('day1','hotel','ホテル')" style="margin-right: 5px;"
+          = icon('fas', 'hotel fa-2x')
+  #day2
+    h3
+      |2日目&emsp;
+      input type="button" value="表示/非表示" name="day2" onclick="form_display(this)"
+    .day2-form_area
+      .day2-place
+      /ここにフォームが追加される
+    
+      .day2-add-form-btn
+        a onclick="add_place('day2','station','　　駅')" style="margin-right: 5px;"
+          = icon('fas', 'bus fa-2x')
+        a onclick="add_place('day2','gourmet','グルメ')" style="margin-right: 5px;"
+          = icon('fas', 'utensils fa-2x')
+        a onclick="add_place('day2','sightseeing','観光地')" style="margin-right: 5px;"
+          = icon('fas', 'map-location-dot fa-2x')
+        a onclick="add_place('day2','hotel','ホテル')" style="margin-right: 5px;"
+          = icon('fas', 'hotel fa-2x')
+
+  #day3
+    h3
+      |3日目&emsp;
+      input type="button" value="表示/非表示" name="day3" onclick="form_display(this)"
+    .day3-form_area
+      .day3-place
+      /ここにフォームが追加される
+    
+      .day3-add-form-btn
+        a onclick="add_place('day3','station','　　駅')" style="margin-right: 5px;"
+          = icon('fas', 'bus fa-2x')
+        a onclick="add_place('day3','gourmet','グルメ')" style="margin-right: 5px;"
+          = icon('fas', 'utensils fa-2x')
+        a onclick="add_place('day3','sightseeing','観光地')" style="margin-right: 5px;"
+          = icon('fas', 'map-location-dot fa-2x')
+        a onclick="add_place('day3','hotel','ホテル')" style="margin-right: 5px;"
+          = icon('fas', 'hotel fa-2x')
+
+  #day4
+    h3
+      |4日目&emsp;
+      input type="button" value="表示/非表示" name="day4" onclick="form_display(this)"
+    .day4-form_area
+      .day4-place
+      /ここにフォームが追加される
+    
+      .day4-add-form-btn
+        a onclick="add_place('day4','station','　　駅')" style="margin-right: 5px;"
+          = icon('fas', 'bus fa-2x')
+        a onclick="add_place('day4','gourmet','グルメ')" style="margin-right: 5px;"
+          = icon('fas', 'utensils fa-2x')
+        a onclick="add_place('day4','sightseeing','観光地')" style="margin-right: 5px;"
+          = icon('fas', 'map-location-dot fa-2x')
+        a onclick="add_place('day4','hotel','ホテル')" style="margin-right: 5px;"
+          = icon('fas', 'hotel fa-2x')
+
+  #day5
+    h3
+      |5日目&emsp;
+      input type="button" value="表示/非表示" name="day5" onclick="form_display(this)"
+    .day5-form_area
+      .day5-place
+      /ここにフォームが追加される
+    
+      .day5-add-form-btn
+        a onclick="add_place('day5','station','　　駅')" style="margin-right: 5px;"
+          = icon('fas', 'bus fa-2x')
+        a onclick="add_place('day5','gourmet','グルメ')" style="margin-right: 5px;"
+          = icon('fas', 'utensils fa-2x')
+        a onclick="add_place('day5','sightseeing','観光地')" style="margin-right: 5px;"
+          = icon('fas', 'map-location-dot fa-2x')
+        a onclick="add_place('day5','hotel','ホテル')" style="margin-right: 5px;"
+          = icon('fas', 'hotel fa-2x')
+
+  #day6
+    h3
+      |6日目&emsp;
+      input type="button" value="表示/非表示" name="day6" onclick="form_display(this)"
+    .day6-form_area
+      .day6-place 
+      /ここにフォームが追加される
+    
+      .day-6add-form-btn
+        a onclick="add_place('day6','station','　　駅')" style="margin-right: 5px;"
+          = icon('fas', 'bus fa-2x')
+        a onclick="add_place('day6','gourmet','グルメ')" style="margin-right: 5px;"
+          = icon('fas', 'utensils fa-2x')
+        a onclick="add_place('day6','sightseeing','観光地')" style="margin-right: 5px;"
+          = icon('fas', 'map-location-dot fa-2x')
+        a onclick="add_place('day6','hotel','ホテル')" style="margin-right: 5px;"
+          = icon('fas', 'hotel fa-2x')
+
+  #day7
+    h3
+      |7日目&emsp;
+      input type="button" value="表示/非表示" name="day7" onclick="form_display(this)"
+    .day7-form_area
+      .day7-place
+      /ここにフォームが追加される
+    
+      .day7-add-form-btn
+        a onclick="add_place('day7','station','　　駅')" style="margin-right: 5px;"
+          = icon('fas', 'bus fa-2x')
+        a onclick="add_place('day7','gourmet','グルメ')" style="margin-right: 5px;"
+          = icon('fas', 'utensils fa-2x')
+        a onclick="add_place('day7','sightseeing','観光地')" style="margin-right: 5px;"
+          = icon('fas', 'map-location-dot fa-2x')
+        a onclick="add_place('day7','hotel','ホテル')" style="margin-right: 5px;"
+          = icon('fas', 'hotel fa-2x')
+
+  br
+  .actions = f.submit
+
+javascript:
+  window.onload = change_disp();
