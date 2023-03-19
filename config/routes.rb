@@ -9,5 +9,10 @@ Rails.application.routes.draw do
   end
   
   root to: 'travel_datasets#index'
-  resources :travel_datasets
+  resources :travel_datasets do
+    member do
+      get 'post_pdf'
+    end
+  end
+  
 end

@@ -8,10 +8,12 @@ p
   strong Description:
   = @travel_dataset.description
 
-p
+/p
   strong Dataset:
   = @travel_dataset.dataset
 
 => link_to "Edit", edit_travel_dataset_path(@travel_dataset)
 '|
 =< link_to "Back", travel_datasets_path
+'|
+=< link_to "pdf出力", post_pdf_travel_dataset_path(format: "pdf")

@@ -10,7 +10,7 @@ function add_place(date,name,kind,button){
 }
 
 //実際にフォームを追加する処理
-function buildField(date,name,kind) {
+function buildField(date,name,kind,unique_id="undefined",value=null) {
   //タグの定義
   const html = document.createElement("div");
   const title = document.createElement("label");
@@ -20,7 +20,9 @@ function buildField(date,name,kind) {
   //日時を取得(ユニークなID作成のため)
   const now = new Date();
   const num = Math.floor(Math.random() * 1000);
-  const unique_id = String(now.getFullYear())+String((now.getMonth()+1))+String(now.getDate())+String(now.getHours())+String(now.getMinutes())+String(now.getSeconds())+String(num);
+  if (unique_id="undefined"){
+    unique_id = String(now.getFullYear())+String((now.getMonth()+1))+String(now.getDate())+String(now.getHours())+String(now.getMinutes())+String(now.getSeconds())+String(num);
+  }
 
   //属性の追加
   html.setAttribute("id", unique_id);
@@ -30,6 +32,9 @@ function buildField(date,name,kind) {
 
   form.setAttribute("id", "form")
   form.setAttribute("name", date+"-"+name+"-"+unique_id)
+  if (value!==null){
+    form.setAttribute("value", value)
+  }
 
   //挿入するHTMLの構成を作成
   html.append(title,form);
@@ -52,6 +57,18 @@ function remove_form(button){
   }
 }
 
+//入力エリアの表示/非表示
+function form_display(button){
+  const date = button.name;
+  const tag = document.getElementsByClassName(date+"-form_area")[0]
+
+  if(tag.style.display == ""){
+    tag.style.display = "none"
+  }else{
+    tag.style.display = ""
+  }
+}
+
 //旅行日数にしたがって表示範囲を切り替え
 function change_disp(){
   const stay_number = document.getElementById("travel_dataset_stay_number").value;
@@ -65,14 +82,33 @@ function change_disp(){
   }
 }
 
-//入力エリアの表示/非表示
-function form_display(button){
-  const date = button.name;
-  const tag = document.getElementsByClassName(date+"-form_area")[0]
+//編集用
+function edit_data(){
+  if (gon.stay_number!==null){
+    const obj = JSON.parse(gon.dataset);
+    const stay_number = gon.stay_number;
 
-  if(tag.style.display == ""){
-    tag.style.display = "none"
-  }else{
-    tag.style.display = ""
+    for (let i=1; i<stay_number+1; i++){
+      let data = obj["day"+i];
+
+      for (const key in data){
+        const split_key = key.split('-');
+        const value = data[key];
+        let kind;
+
+        if (split_key[1]=="station"){
+          kind = "　　駅"
+        }else if(split_key[1]=="gourmet"){
+          kind = "グルメ"
+        }else if(split_key[1]=="sightseeing"){
+          kind = "観光地"
+        }else if(split_key[1]=="hotel"){
+          kind = "ホテル"
+        }
+
+        document.getElementsByClassName(split_key[0]+"-place")[0].append(buildField(split_key[0],split_key[1],kind,split_key[2],value)); 
+        document.getElementsByClassName(split_key[0]+"-add-form-btn")[0].style.display = "none";
+      }
+    }
   }
 }

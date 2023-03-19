@@ -1,5 +1,5 @@
 class TravelDatasetsController < ApplicationController
-  before_action :set_travel_dataset, only: %i[ show edit update destroy ]
+  before_action :set_travel_dataset, only: %i[ show edit update destroy post_pdf ]
 
   # GET /travel_datasets or /travel_datasets.json
   def index
@@ -10,13 +10,28 @@ class TravelDatasetsController < ApplicationController
   def show
   end
 
+  def post_pdf
+    respond_to do |format|
+      format.pdf do
+        post_pdf = PracticePdf::PostPdf.new(@travel_dataset).render
+        send_data post_pdf,
+          filename: 'post_pdf.pdf',
+          type: 'application/pdf',
+          disposition: 'inline' # 外すとダウンロード
+      end
+    end
+  end
+
   # GET /travel_datasets/new
   def new
     @travel_dataset = TravelDataset.new
+    gon.stay_number = @travel_dataset.stay_number
   end
 
   # GET /travel_datasets/1/edit
   def edit
+    gon.stay_number = @travel_dataset.stay_number
+    gon.dataset = @travel_dataset.dataset
   end
 
   # POST /travel_datasets or /travel_datasets.json
@@ -66,7 +81,6 @@ class TravelDatasetsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def travel_dataset_params
       params[:travel_dataset][:dataset] = Utils::TravelDatasetUtil.generate_dataset(params)
-      
       params.require(:travel_dataset).permit(:name, :description, :start_date, :stay_number, :dataset)
     end
 end

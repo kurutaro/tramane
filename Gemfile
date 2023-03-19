@@ -20,6 +20,9 @@ gem 'image_processing', '~> 1.2'
 gem 'rack-cors'
 gem 'pry-rails'
 gem 'font-awesome-sass'
+gem 'gon'
+gem 'prawn'
+gem 'prawn-table'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
