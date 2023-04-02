@@ -16,9 +16,8 @@ module PracticePdf
 
     def contents(record)
       @record = record
-      font 'app/assets/fonts/SourceHanSans-Bold.ttc'
-      text_box "旅行日程表", at: [0, 750], size: 15, align: :center
-
+      # font 'app/assets/fonts/SourceHanSans-Bold.ttc'
+      # text_box "旅行日程表", at: [0, 750], size: 15, align: :center
     end
   end
 end

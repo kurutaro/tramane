@@ -1,4 +1,4 @@
-# fly.toml file generated for tramane on 2023-03-20T10:57:14Z
+# fly.toml file generated for tramane on 2023-04-01T08:34:49Z
 
 app = "tramane"
 kill_signal = "SIGINT"
@@ -13,7 +13,7 @@ processes = []
 
 [[services]]
   http_checks = []
-  internal_port = 3000
+  internal_port = 8080
   processes = ["app"]
   protocol = "tcp"
   script_checks = []
